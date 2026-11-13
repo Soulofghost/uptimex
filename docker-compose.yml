@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  uptimex:
+    build: .
+    container_name: uptimex-service
+    ports:
+      - "8000:8000"
+    environment:
+      - UPTIMEX_PORT=8000
+      - UPTIMEX_DB_PATH=backend/data/uptimex.db
+    volumes:
+      - uptimex-data:/app/backend/data
+    restart: unless-stopped
+
+volumes:
+  uptimex-data:
